@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const appContext = React.createContext(null);
 
@@ -10,5 +10,27 @@ export const useAppContext = () => {
 };
 
 export const AppContextProvider = ({ children }) => {
-  return <ContextProvider value={"conectado!"}>{children}</ContextProvider>;
+  const [allTips, setAllTips] = useState([]);
+  const [filter, setFilter] = useState(null);
+
+  const createTip = (tip) => {
+    setAllTips((prev) => [...prev, tip]);
+  };
+
+  const filterTips = (query) => {
+    if (query) {
+      setFilter(query);
+    } else {
+      setFilter(null);
+    }
+  };
+
+  const tips = filter
+    ? allTips.filter((tip) => tip.titulo.includes(filter))
+    : allTips;
+  return (
+    <ContextProvider value={{ createTip, filterTips, tips }}>
+      {children}
+    </ContextProvider>
+  );
 };
