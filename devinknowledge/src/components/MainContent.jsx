@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useAppContext } from "../contexts/app-context";
 import { CardList } from "./CardList";
 import { Filter } from "./Filter";
 import { Summary } from "./Summary";
@@ -13,6 +14,8 @@ const umaDica = {
 };
 
 export const MainContent = () => {
+  const result = useAppContext();
+  console.log(result);
   return (
     <main className="main-container">
       <Summary />
