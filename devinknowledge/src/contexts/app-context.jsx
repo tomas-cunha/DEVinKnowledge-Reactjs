@@ -28,8 +28,19 @@ export const AppContextProvider = ({ children }) => {
   const tips = filter
     ? allTips.filter((tip) => tip.titulo.includes(filter))
     : allTips;
+
+  const sortByCategory = () => {
+    const categories = Array.from(new Set(allTips.map((tip) => tip.categoria)));
+    return categories.map((catName) => {
+      const count = allTips.filter((tip) => tip.categoria == catName).length;
+      return { title: catName, count: count };
+    });
+  };
+
+  const categories = sortByCategory;
+
   return (
-    <ContextProvider value={{ createTip, filterTips, tips }}>
+    <ContextProvider value={{ createTip, filterTips, tips, categories }}>
       {children}
     </ContextProvider>
   );
