@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { MainContent } from "../components/MainContent";
-import { Sidebar } from "../components/Siderbar";
+import { Sidebar } from "../components/Sidebar";
 
 export const Home = () => {
   return (
