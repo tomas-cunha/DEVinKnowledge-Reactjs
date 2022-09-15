@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import { useAppContext } from "../contexts/app-context";
 
 export const Sidebar = () => {
+  const { createTip } = useAppContext();
   const { register, handleSubmit, formState } = useForm();
 
   const handleCreateTip = (data) => {
-    console.log(data);
+    createTip(data);
   };
 
   return (

@@ -37,10 +37,10 @@ export const AppContextProvider = ({ children }) => {
     });
   };
 
-  const categories = sortByCategory;
+  const allCategories = sortByCategory();
 
   return (
-    <ContextProvider value={{ createTip, filterTips, tips, categories }}>
+    <ContextProvider value={{ createTip, filterTips, tips, allCategories }}>
       {children}
     </ContextProvider>
   );
